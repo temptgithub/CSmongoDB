@@ -1,0 +1,92 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>My App</title>
+
+  <link>      </link>
+  <meta name="description" content="first app">
+  <meta name="me" content="first app">
+  <script src="scripts/jquery-3.3.1.min.js"></script>
+
+  <!--<script
+    src="https://code.jquery.com/jquery-3.4.0.min.js"
+    integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+    crossorigin="anonymous"></script> cdn-->
+
+<style>  </style>
+
+
+</head>
+<body style="background-color:salmon;">
+
+<h2>Hello World from my SUBMIT APP !</h2>
+
+    <input id="number" type = "number" />
+    <button id="save"> save to server</button>
+    <div id = "status" > </div>
+    <div id = "history">  </div>
+
+  <br>
+
+
+<p>
+<br>
+</p>
+
+
+
+
+
+
+
+
+
+
+  <h3>Type in the City: </h3>
+  <input id = "city" type = "text" />
+  <button id="submit">Submit</button>
+
+  <div id="container"> </div>
+
+  <script>
+
+      "use strict";
+      $(document).ready(function() {
+
+        $("#submit").click(function() {
+          console.log("clicked");
+
+          let searchCity = $("#city").val();
+
+          let data = searchCity;
+        //  API CALL , callback a function after the get is completed
+            $.get(" http://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "&APPID=f6574ca4f05d6e81ea7038c6ac91c03e",
+                function(data){
+                  console.log(data);
+                  console.log(data.weather[0].description); //specifics
+                  let sentence = " <p> the weather in " + data.name + " is " + data.weather[0].description + "</p>" ;
+                  //console.log{` The weather in denver is ${dw} `}
+
+                  $("#container").html(sentence);
+
+                }).fail(function (data) {
+
+                  //console.log("there was an error!");
+                  let cit = data.name;
+                //old  $("#container").html(`<p id='error'> <h1 style = 'color: red;'> SORRY, we could not find the CITY! ${cit} </h1> </p>`);
+                  $("#container").html(`<p id='error'> <h1 style = 'color: red;'> SORRY, we could not find the CITY!  </h1> </p>`);
+
+                });
+        });
+
+      });
+
+  </script>
+<script src="scripts/submit.js"> </script>
+
+<!-- script  at  end  -->
+</body>
+</html>
