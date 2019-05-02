@@ -1,0 +1,232 @@
+<!doctype html>
+
+
+
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+
+
+  <title>My App</title>
+
+
+
+  <link>      </link>
+
+  <meta name="description" content="first app">
+
+  <meta name="me" content="first app">
+
+<!--  <script src="scripts/jquery-3.3.1.min.js"></script>
+
+  <script src="scripts/scripts.js"> </script> -->
+
+<script
+
+    src="https://code.jquery.com/jquery-3.4.0.min.js"
+
+    integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+
+    crossorigin="anonymous"></script>
+
+
+
+<style>  </style>
+
+
+
+
+
+</head>
+
+<body style="background-color:orange;">
+
+
+
+<h2>Hello World from my First APP !<h2>
+
+
+
+
+
+<p> your name: </p>
+
+  <input type="text" name="name" id="name">
+
+<p> Your Message: </p>
+
+<input type="text" name="message" id="message" />
+
+<button id="submit" > Submit Message!</button>
+
+<p id="result"></p>
+
+
+
+<script>
+
+  $(document).ready(() => {
+
+    console.log("jquery is ready");
+
+      $("#submit").click(() => {
+
+
+
+             let data = {
+
+               user: $("#user").val(),
+
+               message: $("#message").val()
+
+             };
+
+
+
+             $.post("http://localhost:3000/saveMessage", data, (recievedBackEnd) =>
+
+             {
+
+               $("#result").html("your message has been received by the server");
+
+               console.log("Message has been sent");
+
+             });
+
+
+
+      });
+
+
+
+});
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+<button id="request-button"> Press to send Post request<button>
+
+
+
+  <br>
+
+
+
+
+
+<p>
+
+<br>
+
+</p>
+
+
+
+<!--
+
+
+
+  <h3>Type in the City: </h3>
+
+  <input id = "city" type = "text" />
+
+  <button id="submit">Submit</button>
+
+
+
+  <div id="container"> </div>
+
+
+
+  <script>
+
+
+
+      "use strict";
+
+      $(document).ready(function() {
+
+
+
+        $("#submit").click(function() {
+
+          console.log("clicked");
+
+
+
+          let searchCity = $("#city").val();
+
+
+
+          let data = searchCity;
+
+        //  API CALL , callback a function after the get is completed
+
+            $.get(" http://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "&APPID=f6574ca4f05d6e81ea7038c6ac91c03e",
+
+                function(data){
+
+                  console.log(data);
+
+                  console.log(data.weather[0].description); //specifics
+
+                  let sentence = " <p> the weather in " + data.name + " is " + data.weather[0].description + "</p>" ;
+
+                  //console.log{` The weather in denver is ${dw} `}
+
+
+
+                  $("#container").html(sentence);
+
+
+
+                }).fail(function (data) {
+
+
+
+                  //console.log("there was an error!");
+
+                  let cit = data.name;
+
+                //old  $("#container").html(`<p id='error'> <h1 style = 'color: red;'> SORRY, we could not find the CITY! ${cit} </h1> </p>`);
+
+                  $("#container").html(`<p id='error'> <h1 style = 'color: red;'> SORRY, we could not find the CITY!  </h1> </p>`);
+
+
+
+                });
+
+        });
+
+
+
+      });
+
+
+
+  </script>
+
+-->
+
+
+
+<!-- script  at  end  -->
+
+</body>
+
+</html>
+
+
+
